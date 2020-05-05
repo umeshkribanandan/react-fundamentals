@@ -42,7 +42,7 @@ class App extends Component {
             <Char
               char={c}
               key={index}
-              click={this.removeHandler.bind(this, index)}
+              click={() => this.removeHandler(index)}
             />
           );
         })}
