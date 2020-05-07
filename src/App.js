@@ -3,6 +3,7 @@ import UserOutput from "./UserOutput";
 import UserInput from "./UserInput";
 import Validation from "./Validation";
 import Char from "./Char";
+import Blog from "./containers/Blog/Blog";
 
 import "./App.css";
 
@@ -46,6 +47,7 @@ class App extends Component {
             />
           );
         })}
+        <Blog />
       </div>
     );
   }
