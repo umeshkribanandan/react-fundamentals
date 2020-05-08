@@ -5,6 +5,8 @@ import Validation from "./Validation";
 import Char from "./Char";
 import Blog from "./containers/Blog/Blog";
 
+import { BrowserRouter } from "react-router-dom";
+
 import "./App.css";
 
 class App extends Component {
@@ -27,28 +29,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <UserInput
-          change={this.usernameHandler.bind(this)}
-          username={this.state.username}
-        />
-        <UserOutput username={this.state.username} />
-        {this.state.username.length && (
-          <p>{this.state.username.length} Characters</p>
-        )}
-        <Validation size={this.state.username.length} />
+      <BrowserRouter>
+        <div className="App">
+          <Blog />
+          <hr />
+          <UserInput
+            change={this.usernameHandler.bind(this)}
+            username={this.state.username}
+          />
+          <UserOutput username={this.state.username} />
+          {this.state.username.length && (
+            <p>{this.state.username.length} Characters</p>
+          )}
+          <Validation size={this.state.username.length} />
 
-        {this.state.username.split("").map((c, index) => {
-          return (
-            <Char
-              char={c}
-              key={index}
-              click={() => this.removeHandler(index)}
-            />
-          );
-        })}
-        <Blog />
-      </div>
+          {this.state.username.split("").map((c, index) => {
+            return (
+              <Char
+                char={c}
+                key={index}
+                click={() => this.removeHandler(index)}
+              />
+            );
+          })}
+        </div>
+      </BrowserRouter>
     );
   }
 }
