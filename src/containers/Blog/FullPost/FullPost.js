@@ -4,23 +4,28 @@ import axios from "axios";
 import "./FullPost.css";
 
 class FullPost extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
   state = {
     spost: null,
   };
 
-  componentDidUpdate() {
+  componentDidMount() {
+    console.log(this.props);
     if (
-      (!this.state.spost && this.props.id) ||
-      (this.state.spost && this.state.spost.id !== this.props.id)
+      (!this.state.spost && this.props.match.params.id) ||
+      (this.state.spost && this.state.spost.id !== this.props.match.params.id)
     ) {
-      axios.get("/posts/" + this.props.id).then((response) => {
+      axios.get("/posts/" + this.props.match.params.id).then((response) => {
         this.setState({ spost: response.data });
       });
     }
   }
 
   deletePostHandler = () => {
-    axios.delete("/posts/" + this.props.id).then((response) => {
+    axios.delete("/posts/" + this.props.match.params.id).then((response) => {
       console.log(response.data);
     });
   };
