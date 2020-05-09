@@ -4,6 +4,7 @@ import UserInput from "./UserInput";
 import Validation from "./Validation";
 import Char from "./Char";
 import Blog from "./containers/Blog/Blog";
+import Counter from "./containers/Counter/Counter";
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -32,6 +33,8 @@ class App extends Component {
       <BrowserRouter basename="/">
         <div className="App">
           <Blog />
+          <hr />
+          <Counter />
           <hr />
           <UserInput
             change={this.usernameHandler.bind(this)}
