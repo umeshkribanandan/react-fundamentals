@@ -1,16 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-
+import axios from "axios";
 import rootReducer from "./store/reducer";
 
-import axios from "axios";
-
-const store = createStore(rootReducer);
+const logger = (store) => {
+  return (next) => {
+    return (action) => {
+      console.log("[Logger Middleware]", action);
+      const result = next(action);
+      console.log("[Logger Middleware]", store.getState());
+      return result;
+    };
+  };
+};
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 axios.defaults.headers.common["Authorization"] = "AUTH_TOKEN";
