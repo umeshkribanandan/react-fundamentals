@@ -1,4 +1,4 @@
-import * as actionTypes from "../action";
+import { ADD_PERSON, DELETE_PERSON } from "../actions/actionTypes";
 
 const initialState = {
   persons: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_PERSON:
+    case ADD_PERSON:
       const newPerson = {
         id: Math.random(),
         name: "Max",
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         persons: state.persons.concat(newPerson),
       };
-    case actionTypes.DELETE_PERSON:
+    case DELETE_PERSON:
       let updatedPerson = state.persons.filter(
         (person) => person.id !== action.payload
       );
