@@ -1,28 +1,12 @@
-const initialState = {
-  counter: 0,
-};
+import { combineReducers } from "redux";
+import counter from "./reducers/counter";
+import results from "./reducers/results";
+import persons from "./reducers/persons";
 
-const reducer = (state = initialState, action) => {
-  let rState = state;
-  console.log(action.type);
-  switch (action.type) {
-    case "INCREMENT":
-      rState = {
-        ...state,
-        counter: state.counter + 1,
-      };
-      break;
-    case "DECREMENT":
-      rState = {
-        ...state,
-        counter: state.counter - 1,
-      };
-      break;
-    default:
-      rState = state;
-      break;
-  }
-  return rState;
-};
+const rootReducer = combineReducers({
+  c: counter,
+  r: results,
+  p: persons,
+});
 
-export default reducer;
+export default rootReducer;

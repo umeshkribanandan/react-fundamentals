@@ -6,11 +6,11 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import reducer from "./store/reducer";
+import rootReducer from "./store/reducer";
 
 import axios from "axios";
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 axios.defaults.headers.common["Authorization"] = "AUTH_TOKEN";

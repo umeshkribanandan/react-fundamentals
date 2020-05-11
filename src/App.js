@@ -5,6 +5,7 @@ import Validation from "./Validation";
 import Char from "./Char";
 import Blog from "./containers/Blog/Blog";
 import Counter from "./containers/Counter/Counter";
+import Persons from "./containers/Persons/Persons";
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -35,6 +36,8 @@ class App extends Component {
           <Blog />
           <hr />
           <Counter />
+          <hr />
+          <Persons />
           <hr />
           <UserInput
             change={this.usernameHandler.bind(this)}
