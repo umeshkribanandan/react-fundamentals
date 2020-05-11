@@ -9,7 +9,7 @@ export const saveResult = (value) => {
 export const storeResult = (value) => {
   return (dispatch, getState) => {
     setTimeout(() => {
-      console.log(getState().ctr.counter);
+      console.log(getState().c.counter);
       dispatch(saveResult(value));
     }, 2000);
   };

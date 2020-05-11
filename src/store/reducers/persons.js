@@ -1,5 +1,5 @@
 import { ADD_PERSON, DELETE_PERSON } from "../actions/actionTypes";
-
+import { updateObject } from "../utility";
 const initialState = {
   persons: [],
 };
@@ -12,18 +12,16 @@ const reducer = (state = initialState, action) => {
         name: "Max",
         age: Math.floor(Math.random() * 40),
       };
-      return {
-        ...state,
+      return updateObject(state, {
         persons: state.persons.concat(newPerson),
-      };
+      });
     case DELETE_PERSON:
       let updatedPerson = state.persons.filter(
         (person) => person.id !== action.payload
       );
-      return {
-        ...state,
+      return updateObject(state, {
         persons: updatedPerson,
-      };
+      });
     default:
       return state;
   }
